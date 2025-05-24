@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/dialog";
 import clsx from "clsx";
 import { Header } from "@/components/header";
+import { useAuth } from "@/context/AuthContext";
 
 interface Task {
   id: number;
@@ -23,6 +24,8 @@ interface Task {
 }
 
 export const Dashboard = (): JSX.Element => {
+  const { user } = useAuth();
+
   const [tasks, setTasks] = useState<Task[]>([
     {
       id: 1,
@@ -89,7 +92,7 @@ export const Dashboard = (): JSX.Element => {
 
         <div className="my-14">
           <h1 className="text-3xl font-extrabold mb-2">
-            Welcome, <span className="text-[#007fff]">Admin</span>.
+            Welcome, <span className="text-[#007fff]">{user?.username}</span>.
           </h1>
           <p className="text-gray-500">
             Your team got {tasks.length} tasks to do.
