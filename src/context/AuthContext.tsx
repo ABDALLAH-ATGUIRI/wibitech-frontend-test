@@ -39,6 +39,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     localStorage.setItem("token", token);
     setUser(user);
     setIsAdmin(user.role === "admin");
+    navigate("/dashboard");
   };
 
   const logout = () => {
@@ -62,7 +63,11 @@ export const useAuth = () => {
   return context;
 };
 
-export const ProtectedRoute = ({ allowedRoles }: { allowedRoles: string[] }) => {
+export const ProtectedRoute = ({
+  allowedRoles,
+}: {
+  allowedRoles: string[];
+}) => {
   const { user } = useAuth();
 
   if (!user) return <Navigate to="/login" />;
