@@ -10,25 +10,21 @@ export default defineConfig(({ mode }) => {
   return {
     base: "/wibitech-frontend-test/",
     publicDir: "public", // Ensure assets in public folder are served correctly
-    preview: {
-      headers: {
-        "Permissions-Policy": "geolocation=(), camera=(), microphone=()",
-      },
-    },
+    plugins: [react()],
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "src"),
       },
     },
-
-    plugins: [react()],
-
+    optimizeDeps: {
+      include: ["react", "react-dom"],
+      exclude: ["lucide-react"],
+    },
     css: {
       postcss: {
         plugins: [tailwind()],
       },
     },
-
     server: {
       proxy: {
         "^/api": {
