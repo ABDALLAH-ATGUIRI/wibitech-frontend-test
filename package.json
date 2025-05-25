@@ -5,10 +5,12 @@
   "name": "taski",
   "description": "Taski",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build",
-    "predeploy": "vite build --base=/pr-${PR_NUMBER}/",
-    "deploy": "gh-pages -d dist -b gh-pages -m \"Deploy PR ${PR_NUMBER}\""
+    "preview": "vite preview",
+    "format": "prettier --write .",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "deploy": "vite build && cp dist/index.html dist/404.html && npx gh-pages -d dist"
   },
   "repository": {
     "type": "git",
