@@ -13,7 +13,6 @@ export const Login = (): JSX.Element => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
-  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,7 +23,6 @@ export const Login = (): JSX.Element => {
     if (response.success) {
       const { user } = response;
       login(user, user.token);
-      navigate("/dashboard");
     } else {
       setError(response?.message);
     }
