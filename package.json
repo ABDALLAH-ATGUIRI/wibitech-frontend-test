@@ -4,6 +4,10 @@
   "type": "module",
   "name": "taski",
   "description": "Taski",
+  "private": true,
+  "license": "MIT",
+  "main": "main.tsx",
+  "homepage": "https://abdallah-atguiri.github.io/wibitech-frontend-test",
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
