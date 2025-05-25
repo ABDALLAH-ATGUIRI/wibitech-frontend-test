@@ -17,7 +17,6 @@ export const loginRequest = async (username: string, password: string) => {
       { username, password },
       { withCredentials: true }
     );
-    console.log(response);
 
     const { token, user } = response.data;
 
