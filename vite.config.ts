@@ -9,7 +9,12 @@ export default defineConfig(({ mode }) => {
 
   return {
     base: "./",
-
+    publicDir: "public", // Ensure assets in public folder are served correctly
+    preview: {
+      headers: {
+        "Permissions-Policy": "geolocation=(), camera=(), microphone=()",
+      },
+    },
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "src"),
