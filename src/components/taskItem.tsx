@@ -4,7 +4,7 @@ import {
   CheckCircleIcon,
   CheckIcon,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/button";
 import clsx from "clsx";
 import { useAuth } from "@/context/AuthContext";
 

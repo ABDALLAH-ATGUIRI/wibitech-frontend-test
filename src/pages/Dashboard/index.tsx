@@ -3,8 +3,8 @@ import { Header } from "@/components/header";
 import { useAuth } from "@/context/AuthContext";
 import { TaskCard } from "@/components/taskCard";
 import { deleteTask, getTasks, updateTask } from "@/services/taskService";
-import AddTaskButton from "@/components/ui/addTaskButton";
-import TaskItem from "@/components/ui/taskItem";
+import AddTaskButton from "@/components/addTaskButton";
+import TaskItem from "@/components/taskItem";
 
 interface Task {
   id: number;

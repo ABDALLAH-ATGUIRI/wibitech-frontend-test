@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
-import { Button } from "./ui/button";
-import Input from "./ui/Input";
-import SelectInput from "./ui/selectInput";
+import { Button } from "./button";
+import Input from "./Input";
+import SelectInput from "./selectInput";
 import { getUsers } from "@/services/UserService";
 import { createTask, updateTask } from "@/services/taskService";
 import { useAuth } from "@/context/AuthContext";

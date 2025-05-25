@@ -1,10 +1,9 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { Login } from "./screens/Login";
-import { Dashboard } from "./screens/Dashboard";
-import ProtectedRoute from "./components/ProtectedRoute";
-import { AuthProvider } from "./context/AuthContext";
+import { Login } from "./pages/Login";
+import { Dashboard } from "./pages/Dashboard";
+import { AuthProvider, ProtectedRoute } from "./context/AuthContext";
 
 createRoot(document.getElementById("app") as HTMLElement).render(
   <StrictMode>

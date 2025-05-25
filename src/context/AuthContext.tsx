@@ -1,12 +1,13 @@
 // context/AuthContext.tsx
 import { createContext, useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, Outlet, useNavigate } from "react-router-dom";
 
 interface User {
   firstName: string;
   lastName: string;
   role: string;
   username: string;
+  token: string;
 }
 
 interface AuthContextProps {
@@ -59,4 +60,13 @@ export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) throw new Error("useAuth must be used inside AuthProvider");
   return context;
+};
+
+export const ProtectedRoute = ({ allowedRoles }: { allowedRoles: string[] }) => {
+  const { user } = useAuth();
+
+  if (!user) return <Navigate to="/login" />;
+  if (!allowedRoles.includes(user.role)) return <Navigate to="/unauthorized" />;
+
+  return <Outlet />;
 };
