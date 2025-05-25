@@ -4,13 +4,18 @@ import axios from "axios";
 const instanceAxios = axios.create({
   baseURL: "/api",
   withCredentials: true, // for cookies (e.g., Sanctum or Passport)
+  headers: {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+    "Cache-Control": "no-cache",
+  },
 });
 
 // Optional: Request Interceptor (add auth headers if needed)
 instanceAxios.interceptors.request.use(
   (config) => {
     // Example: add Authorization token from localStorage
-    const token = localStorage.getItem("auth_token");
+    const token = localStorage.getItem("token");
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }

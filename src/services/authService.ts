@@ -1,4 +1,3 @@
-// services/authService.ts
 import api from "@/lib/axios";
 
 type LoginResponse = {
@@ -8,7 +7,6 @@ type LoginResponse = {
     name: string;
     email: string;
     role: string;
-    // add any additional user fields here
   };
 };
 

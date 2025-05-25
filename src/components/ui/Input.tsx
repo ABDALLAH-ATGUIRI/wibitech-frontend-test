@@ -8,7 +8,7 @@ type InputProps = {
   label: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  type?: "text" | "email" | "password";
+  type?: "text" | "email" | "password" | "textarea";
   placeholder?: string;
   className?: string;
   required?: boolean;
@@ -29,7 +29,7 @@ export const Input: FC<InputProps> = ({
 
   return (
     <div className={clsx("flex flex-col gap-2.5 w-full", className)}>
-      <label htmlFor={id} className="font-semibold text-sm leading-[14px]">
+      <label htmlFor={id} className="font-bold text-md leading-[14px]">
         {label}
       </label>
 
@@ -45,6 +45,10 @@ export const Input: FC<InputProps> = ({
           value={value}
           onChange={onChange}
           placeholder={placeholder}
+          className={clsx(
+            "w-full bg-transparent outline-none",
+            type === "textarea" && " resize-none h-24"
+          )}
           required={required}
         />
         {isPassword && (

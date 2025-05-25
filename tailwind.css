@@ -15,6 +15,10 @@
   input {
     @apply w-full bg-transparent text-[13px] font-medium border-0 p-0 h-auto focus-visible:ring-0 focus-visible:ring-offset-0 outline-none
   }
+
+  select {
+    @apply w-full bg-transparent text-[13px] font-medium border-0 p-0 h-auto focus-visible:ring-0 focus-visible:ring-offset-0 outline-none
+  }
 }
 
 @layer base {

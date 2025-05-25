@@ -24,9 +24,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const savedUser = localStorage.getItem("user");    
+    const savedUser = localStorage.getItem("user");
     if (savedUser) {
-      setUser(JSON.parse(savedUser));
+      const authuser = JSON.parse(savedUser);
+      setUser(authuser);
+      setIsAdmin(authuser.role === "admin");
       navigate("/dashboard");
     }
   }, []);
@@ -34,7 +36,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const login = (user: User, token: string) => {
     localStorage.setItem("user", JSON.stringify(user));
     localStorage.setItem("token", token);
-    console.log(user);
     setUser(user);
     setIsAdmin(user.role === "admin");
   };
@@ -48,7 +49,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, isAdmin, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
