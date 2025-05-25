@@ -8,7 +8,7 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd());
 
   return {
-    base: "./",
+    base: "/wibitech-frontend-test/",
     publicDir: "public", // Ensure assets in public folder are served correctly
     preview: {
       headers: {
