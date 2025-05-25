@@ -42,15 +42,7 @@ This is the frontend for the Wibitech project, named "Taski". The application is
    ```
 
    This will start the development server.
-
-## Scripts
-
-- `npm run dev`: Starts the development server.
-- `npm run build`: Builds the application for production.
-- `npm run preview`: Previews the production build.
-- `npm run format`: Formats the code using Prettier.
-- `npm run lint`: Lints the code using ESLint.
-- `npm run deploy`: Builds the application and deploys it to GitHub Pages.
+   
 
 ## Project Structure
 
@@ -59,8 +51,3 @@ This is the frontend for the Wibitech project, named "Taski". The application is
 - **src/services**: Contains service files for API interactions.
 - **src/context**: Contains context providers for state management.
 - **src/lib**: Contains utility libraries and configurations.
-
-## License
-
-This project is licensed under the MIT License.
-
