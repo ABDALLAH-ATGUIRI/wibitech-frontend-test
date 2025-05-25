@@ -8,7 +8,7 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd());
 
   return {
-    base: "/wibitech-frontend-test/",
+    base: "/",
     publicDir: "public", // Ensure assets in public folder are served correctly
     plugins: [react()],
     resolve: {
@@ -31,7 +31,6 @@ export default defineConfig(({ mode }) => {
           target: env.VITE_API_URL,
           changeOrigin: true,
           secure: false,
-          rewrite: (path) => path.replace(/^\/api/, "/api"),
         },
       },
     },
