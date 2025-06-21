@@ -10,7 +10,7 @@ type Task = {
   id: number;
   title: string;
   description: string;
-  assignedTo: string;
+  user_id: string;
 };
 
 type UserOption = {
@@ -37,7 +37,7 @@ export const TaskCard = ({
     id: 0,
     title: "",
     description: "",
-    assignedTo: "",
+    user_id: "",
   });
 
   const [users, setUsers] = useState<UserOption[]>([]);
@@ -53,7 +53,7 @@ export const TaskCard = ({
         id: 0,
         title: "",
         description: "",
-        assignedTo: "",
+        user_id: "",
       });
     }
   }, [editingTask]);
@@ -64,18 +64,14 @@ export const TaskCard = ({
 
     (async () => {
       try {
-        const response = await getUsers();
-        if (response?.success) {
-          setUsers(
-            response.data
-              .filter((u: { role: string }) => u.role === "user")
-              .map((u: { username: string }) => ({
-                id: u.username,
-                label: u.username,
-              }))
-          );
-          usersFetched.current = true;
-        }
+        const { data } = await getUsers();
+        const formatedUsers = data.map((u: {id: string, username: string }) => ({
+          id: u.id,
+          label: u.username,
+        }));
+
+        setUsers(formatedUsers);
+        usersFetched.current = true;
       } catch (err) {
         console.error("Failed to fetch users:", err);
       }
@@ -88,8 +84,8 @@ export const TaskCard = ({
       setTask((prev) => ({ ...prev, [key]: e.target.value }));
     };
 
-  const handleAssignedToChange = (value: string | number) => {
-    setTask((prev) => ({ ...prev, assignedTo: String(value) }));
+  const handleuser_idChange = (value: string | number) => {
+    setTask((prev) => ({ ...prev, user_id: String(value) }));
   };
 
   const handleSaveTask = useCallback(async () => {
@@ -129,11 +125,11 @@ export const TaskCard = ({
             {isAdmin && (
               <div className="w-2/5">
                 <SelectInput
-                  id="assignedTo"
+                  id="user_id"
                   label="Assigned To"
                   items={users}
-                  value={task.assignedTo}
-                  onChange={handleAssignedToChange}
+                  value={task.user_id}
+                  onChange={handleuser_idChange}
                   placeholder="Select a user"
                 />
               </div>

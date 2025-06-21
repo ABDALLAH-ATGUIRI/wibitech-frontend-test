@@ -8,11 +8,18 @@ import { Button } from "@/components/button";
 import clsx from "clsx";
 import { useAuth } from "@/context/AuthContext";
 
+interface User {
+  id: string;
+  username: string;
+  email: string;
+  role: string;
+}
+
 interface Task {
   id: number;
   title: string;
   description: string;
-  assignedTo: string;
+  user: User;
   status: string;
 }
 
@@ -34,7 +41,7 @@ const TaskItem = ({ task, onEdit, onDelete, onComplete }: TaskItemProps) => {
 
         <div className="flex-1">
           <div className="mb-2">
-            <span className="text-sm text-[#007fff]">@{task.assignedTo}</span>
+            <span className="text-sm text-[#007fff]">@{task.user.username}</span>
             <h3
               className={clsx(
                 "text-lg font-semibold",

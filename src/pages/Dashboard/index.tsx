@@ -29,8 +29,8 @@ export const Dashboard = (): JSX.Element => {
 
   const fetchTasks = useCallback(async () => {
     try {
-      const res = await getTasks();
-      if (res?.success) setTasks(res.data);
+      const { data } = await getTasks();
+      setTasks(data.data);
     } catch (error) {
       console.error("Failed to fetch tasks:", error);
     }

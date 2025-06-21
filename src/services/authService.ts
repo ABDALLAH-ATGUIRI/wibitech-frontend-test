@@ -31,7 +31,7 @@ export const loginRequest = async (username: string, password: string) => {
   } catch (error: any) {
     return {
       success: false,
-      message: error?.response?.data?.error || "Login failed",
+      message: error?.response?.data?.message || "Login failed",
       status: error?.status || 500,
     };
   }

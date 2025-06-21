@@ -3,7 +3,7 @@ import api from "@/lib/axios";
 export const getUsers = async () => {
 
   try {
-    const response = await api.get("/users");
+    const response = await api.post("/users", { role: "user" });
     return {
       success: true,
       data: response.data,
